@@ -3,7 +3,7 @@ import { FaBars } from 'react-icons/fa'
 import React, { useState, useEffect } from 'react'
 
 import Navbar from '@/components/Navbar'
-import Button from '@/components/Button'
+import { Button, ButtonSize, ButtonType } from '@/components/Button'
 
 import { type HeaderProps } from './types'
 import './style.css'
@@ -167,6 +167,8 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps): JSX.Element => {
       <div className="header-items waitlist-container">
         <Link className="waitlistLink" to="/">
           <Button
+            type={ButtonType.Button}
+            size={ButtonSize.Small}
             onClick={() => {
               setActivePage('signup')
               const refContainerCurrent =
@@ -179,7 +181,6 @@ const Header: React.FC<HeaderProps> = (props: HeaderProps): JSX.Element => {
                 window.scrollTo({ top: y, behavior: 'smooth' })
               }
             }}
-            size="small"
           >
             Join Waitlist
           </Button>

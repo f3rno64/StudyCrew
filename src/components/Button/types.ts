@@ -1,8 +1,28 @@
 import { type ReactNode } from 'react'
 
+export enum ButtonVariant {
+  Normal = 'normal',
+  Outline = 'outline'
+}
+
+export enum ButtonSize {
+  Big = 'big',
+  Small = 'small',
+  Normal = 'normal'
+}
+
+export enum ButtonType {
+  Reset = 'reset',
+  Button = 'button',
+  Submit = 'submit'
+}
+
 export interface ButtonProps {
-  children: ReactNode
-  variant?: 'outline' | 'primary'
-  size?: 'big' | 'small' | 'big-outline'
+  label?: string
+  type: ButtonType
+  size?: ButtonSize
+  className?: string
+  children?: ReactNode
   onClick?: () => void
+  variant?: ButtonVariant
 }

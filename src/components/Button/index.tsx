@@ -1,25 +1,42 @@
+import cn from 'clsx'
 import React from 'react'
+import _isUndefined from 'lodash/isUndefined'
 
-import { CLASS_NAME } from './const'
-import { type ButtonProps } from './types'
-
-import './style.css'
+import {
+  ButtonType,
+  ButtonSize,
+  ButtonVariant,
+  type ButtonProps
+} from './types'
 
 const Button: React.FC<ButtonProps> = (props: ButtonProps): JSX.Element => {
-  const { onClick, variant = 'primary', size, children } = props
-
-  let className = CLASS_NAME
-
-  if (variant === 'outline') className += ' button-outline'
-  if (size === 'big') className += ' button-big'
-  if (size === 'small') className += ' button-small'
-  if (size === 'big-outline') className += ' button-big-outline'
+  const { type, label, className, onClick, variant, size, children } = props
+  const isBig = size === ButtonSize.Big
+  const isSmall = size === ButtonSize.Small
+  const isOutline = variant === ButtonVariant.Outline
+  const isNormal = size === ButtonSize.Normal || _isUndefined(size)
 
   return (
-    <button className={className} onClick={onClick}>
-      {children}
+    <button
+      type={type}
+      onClick={onClick}
+      className={cn(
+        className,
+        'font-bold rounded-md hover:rounded-lg hover:cursor-pointer',
+        {
+          'text-lg px-6 py-10': isBig,
+          'text-sm px-2 py-4': isSmall,
+          'text-base px-4 py-8': isNormal,
+          'bg-[color:var(--primary-color)] text-white': !isOutline,
+          'border-solid border-[color:var(--primary-color)]': isOutline,
+          'border bg-transparent text-[color:var(--primary-color)]': isOutline
+        }
+      )}
+    >
+      {label ?? children}
     </button>
   )
 }
 
 export default Button
+export { ButtonType, ButtonSize, ButtonVariant, Button }

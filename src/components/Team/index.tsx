@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 
-import Button from '@/components/Button'
 import { TEAM_MEMBERS } from '@/data'
+import { Button, ButtonType } from '@/components/Button'
 
 import './style.css'
 
@@ -64,6 +64,7 @@ const Team = (): JSX.Element => {
       <div className="join-team-section">
         <p>Interested in becoming part of our team?</p>
         <Button
+          type={ButtonType.Button}
           onClick={() => {
             handleClick()
           }}

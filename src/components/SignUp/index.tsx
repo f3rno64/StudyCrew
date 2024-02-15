@@ -1,7 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react'
+
+import { Button, ButtonType } from '@/components/Button'
 import { addToWaitlist, getSpotsLeft } from '@/actions/waitlist.actions'
 
-import Button from '@/components/Button'
 import './style.css'
 
 const { NODE_ENV } = process.env
@@ -162,7 +163,9 @@ function SignUp(): JSX.Element {
               setEmail(e.target.value)
             }}
           />
-          <Button onClick={onHandleJoinWaitlist}>Join WaitList</Button>
+          <Button type={ButtonType.Button} onClick={onHandleJoinWaitlist}>
+            Join WaitList
+          </Button>
         </div>
         {message && <p>{message}</p>}
       </div>

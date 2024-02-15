@@ -1,9 +1,15 @@
 import { FaChevronDown } from 'react-icons/fa'
 import React, { useState, useEffect } from 'react'
 
-import Button from '@/components/Button'
+import {
+  Button,
+  ButtonType,
+  ButtonSize,
+  ButtonVariant
+} from '@/components/Button'
 
 import { type HeroProps } from './types'
+
 import './style.css'
 
 const words = ['Collaborative', 'Accessible', 'Engaging']
@@ -69,14 +75,20 @@ const Hero: React.FC<HeroProps> = (props: HeroProps): JSX.Element => {
         </p>
 
         <div className="button-group">
-          <Button onClick={handleJoinWaitlistClick} size="big">
+          <Button
+            size={ButtonSize.Big}
+            type={ButtonType.Button}
+            onClick={handleJoinWaitlistClick}
+          >
             Join Waitlist
             <FaChevronDown className="icon-inline" />
           </Button>
+
           <Button
+            type={ButtonType.Button}
             onClick={handleLearnMoreClick}
-            variant="outline"
-            size="big-outline"
+            variant={ButtonVariant.Outline}
+            size={ButtonSize.Big}
           >
             Learn More
             <FaChevronDown className="icon-inline" />
